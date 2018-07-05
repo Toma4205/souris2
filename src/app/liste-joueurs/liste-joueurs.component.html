@@ -1,0 +1,25 @@
+<!--<table class="table table-hover table-striped">
+<thead class="thead-light">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Joueurs</th>
+    <th scope="col">Position</th>
+    <th scope="col">Prix</th>
+  </tr>
+</thead>
+<tbody>
+    <tr app-joueur 
+                 [joueurName]="joueur.name"
+                 [joueurPosition]="joueur.position"
+                 [joueurPrix]="joueur.prix"
+                 [id]="joueur.id"
+                 *ngFor="let joueur of joueurs">                     
+     </tr>
+</tbody>
+</table>-->
+
+<ng2-smart-table class= "table-striped text-center" 
+    [settings]="settings" 
+    [source]="joueurs"
+    (userRowSelect)="showSelected($event)">
+</ng2-smart-table>

@@ -1,0 +1,59 @@
+<div class="row">
+	<div class="col-md-12">
+		<!--<div class="progress" style="height: 30px;">
+		  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 10%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="400"><font class="font-weight-bold text-center" color="black">Budget restant : 360</font></div>
+		</div>-->
+		<p><ngb-progressbar [type]="type" [value]="sommeSelection" [striped]="true" height="30px"><font class="font-weight-bold" color="black">Budget restant : {{sommeSelection}}</font></ngb-progressbar></p>
+	</div>
+</div>
+<p> Somme : {{ sommeSelection }}</p>
+<table class="table table-sm table-hover table-striped text-center small">
+<thead class="thead-light">
+  <tr>
+    <th class="col-md-6" scope="col" >Joueurs</th>
+    <th class="col-md-2" scope="col" >Prix</th>
+    <th class="col-md-3" scope="col" >Enchère</th>
+    <th class="col-md-1" scope="col" >Renvoyer</th>
+  </tr>
+</thead>
+<tbody>
+    <tr><th scope="colgroup" colspan="4">Gardiens (min 2)</th></tr>
+    <tr *ngFor="let joueur of selection; let i=index">
+    	<ng-container *ngIf="joueur.position === 'Gardien'">
+         <td class="align-middle col-md-6" style="white-space: nowrap;">{{ joueur.name }}</td>
+     	  <td class="align-middle col-md-2">{{ joueur.prix }}</td>
+          <td class="col-md-3"><input class="form-control-sm text-center" type="number" id="{{ i }}" min="{{ joueur.prix }}" value="{{ joueur.prix }}"></td>
+          <td class="col-md-1"><button type="button" id="{{ i }}" class="btn btn-danger btn-sm" (click)="suppJoueur($event)">X</button></td>
+      	</ng-container>
+    </tr>
+    <tr><th scope="colgroup" colspan="4">Défenseurs (min 6)</th></tr>
+    <tr *ngFor="let joueur of selection; let i=index">
+    	<ng-container *ngIf="joueur.position === 'Défenseur'">
+         <td class="align-middle col-md-6" style="white-space: nowrap;">{{ joueur.name }}</td>
+     	  <td class="align-middle col-md-2">{{ joueur.prix }}</td>
+          <td class="col-md-3"><input class="form-control-sm text-center" type="number" id="{{ i }}" min="{{ joueur.prix }}" value="{{ joueur.prix }}"></td>
+          <td class="col-md-1"><button type="button" id="{{ i }}" class="btn btn-danger btn-sm" (click)="suppJoueur($event)">X</button></td>
+      	</ng-container>
+    </tr>
+    <tr><th scope="colgroup" colspan="4">Milieux (min 6)</th></tr>
+    <tr *ngFor="let joueur of selection; let i=index">
+    	<ng-container *ngIf="joueur.position === 'Milieu'">
+          <td class="align-middle col-md-6" style="white-space: nowrap;">{{ joueur.name }}</td>
+     	  <td class="align-middle col-md-2">{{ joueur.prix }}</td>
+          <td class="col-md-3"><input class="form-control-sm text-center" type="number" id="{{ i }}" min="{{ joueur.prix }}" value="{{ joueur.prix }}"></td>
+          <td class="col-md-1"><button type="button" id="{{ i }}" class="btn btn-danger btn-sm" (click)="suppJoueur($event)">X</button></td>
+      	</ng-container>
+    </tr>
+    <tr><th scope="colgroup" colspan="4">Attaquants (min 4)</th></tr>
+    <tr *ngFor="let joueur of selection; let i=index">
+    	<ng-container *ngIf="joueur.position === 'Attaquant'">
+         <td class="align-middle col-md-6" id = "{{ i }}" style="white-space: nowrap;">{{ joueur.name }}</td>
+     	  <td class="align-middle col-md-2">{{ joueur.prix }}</td>
+          <td class="col-md-3">
+          	<input class="form-control-sm text-center" type="number" id="{{ i }}" min="{{ joueur.prix }}" value="{{ joueur.prix }}">
+          </td>
+          <td class="col-md-1"><button type="button" id="{{ i }}" class="btn btn-danger btn-sm" (click)="suppJoueur($event)">X</button></td>
+      	</ng-container>
+    </tr>
+</tbody>
+</table>

@@ -1,0 +1,9 @@
+  .warning {
+    color: #fb3310;
+  }
+
+  .progress {
+  background-color: #fb3310;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
